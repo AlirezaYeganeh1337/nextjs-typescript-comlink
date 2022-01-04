@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "jsx": "preserve",
+        "lib": ["dom", "es2017", "webworker"],
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "allowJs": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "alwaysStrict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true
+    },
+    "exclude": [
+        "node_modules",
+        "public",
+        "out"
+    ],
+    "include": [
+        "**/*.ts",
+        "**/*.tsx"
+    ]
+}

@@ -1,0 +1,92 @@
+{
+    "name": "nextjs-typescript-comlink",
+    "version": "1.0.0",
+    "description": "Simple sample for Next.js + TypeScript + Web Worker + Comlink",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alirezayeganeh1337/nextjs-typescript-comlink.git"
+    },
+    "scripts": {
+        "start": "next start",
+        "dev": "concurrently \"next dev\" npm:auto-lint npm:auto-format",
+        "build": "npm run lint-format && next build",
+        "lint": "eslint . --ext .ts,.tsx",
+        "format": "prettier --write 'src/**/*'",
+        "lint-format": "npm run lint && npm run format",
+        "auto-format": "npm run format && onchange 'src/**/*' -- prettier --write {{changed}}",
+        "auto-lint": "npm run lint && onchange 'src/**/*.{ts,tsx}' -- npm run lint",
+        "analyze": "source-map-explorer 'build/static/js/*.js'"
+    },
+    "dependencies": {
+        "comlink": "^4.3.0",
+        "next": "^9.4.4",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "worker-plugin": "^4.0.3"
+    },
+    "devDependencies": {
+        "@types/node": "^14.0.13",
+        "@types/react": "^16.9.38",
+        "@types/react-dom": "^16.9.8",
+        "@typescript-eslint/eslint-plugin": "^5.9.0",
+        "@typescript-eslint/parser": "^5.9.0",
+        "concurrently": "^7.0.0",
+        "eslint": "^8.6.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-config-react-app": "^7.0.0",
+        "husky": "^7.0.4",
+        "lint-staged": "^12.1.5",
+        "onchange": "^7.1.0",
+        "prettier": "^2.5.1",
+        "source-map-explorer": "^2.5.2",
+        "typescript": "^4.5.4"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.{ts,tsx}": [
+            "eslint",
+            "prettier --write"
+        ],
+        "src/**/*": [
+            "prettier --write"
+        ]
+    },
+    "prettier": {
+        "semi": true,
+        "printWidth": 80,
+        "tabWidth": 4,
+        "useTabs": false
+    },
+    "eslintConfig": {
+        "root": true,
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+            "project": [
+                "./tsconfig.json"
+            ]
+        },
+        "rules": {
+            "@typescript-eslint/no-empty-interface": 0
+        },
+        "plugins": [
+            "@typescript-eslint"
+        ],
+        "extends": [
+            "eslint:recommended",
+            "plugin:@typescript-eslint/recommended",
+            "plugin:@typescript-eslint/recommended-requiring-type-checking",
+            "react-app",
+            "prettier"
+        ],
+        "env": {
+            "browser": true,
+            "amd": true,
+            "node": true
+        }
+    }
+}
